@@ -1,9 +1,9 @@
 package com.example.Cinema.Model;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+
+
+
+import jakarta.persistence.*;
 
 
 import java.time.LocalDate;
@@ -13,7 +13,8 @@ import java.time.LocalDate;
 public class Movie {
 
     @Id
-    private int id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
     @Column
     private String name;
@@ -30,11 +31,12 @@ public class Movie {
     @Column
     private String image;
 
-    public int getId() {
+
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

@@ -11,6 +11,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("movies")
+@CrossOrigin("*")
 public class MovieController {
 
     @Autowired
@@ -24,4 +25,6 @@ public class MovieController {
     public ResponseEntity<List<Movie>> getAllMovies(){
         return new ResponseEntity<>(movieService.getAllMovies(), HttpStatus.OK);
     }
+
+
 }
