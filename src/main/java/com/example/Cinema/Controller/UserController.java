@@ -37,7 +37,7 @@ public class UserController {
         User user = userService.findByUsername(username);
 
         if (user != null && password.equals(user.getPassword())){
-            String jwtToken = generateToken(user.getUsername(), user.getEmail());
+            String jwtToken = generateToken(user.getUsername(), user.getEmail(), user.isAdmin());
             TokenDTO tokenDTO = new TokenDTO(jwtToken);
             return ResponseEntity.ok(tokenDTO);
         }else {
@@ -47,7 +47,7 @@ public class UserController {
 
     }
 
-    private String generateToken(String username, String email) {
+    private String generateToken(String username, String email, Boolean isAdmin) {
         String secretKey = "your-secret-key";
         long expirationTime = 1000 * 60 * 60 * 24; // 24 hours
         Date expirationDate = new Date(System.currentTimeMillis() + expirationTime);
@@ -55,6 +55,7 @@ public class UserController {
         return Jwts.builder()
                 .setSubject(username)
                 .claim("email", email)
+                .claim("isAdmin", isAdmin)
                 .setExpiration(expirationDate)
                 .signWith(SignatureAlgorithm.HS256, secretKey)
                 .compact();

@@ -28,4 +28,9 @@ public class ReservationController {
     public ResponseEntity<List<ReservationDTO>> getReservationsByUsername(@PathVariable("username")String username){
         return new ResponseEntity<>(reservationService.getReservationsByUsername(username), HttpStatus.OK);
     }
+
+    @DeleteMapping(value = "/{id}")
+    public void cancelReservation(@PathVariable("id")Long reservationId){
+        reservationService.cancelReservation(reservationId);
+    }
 }

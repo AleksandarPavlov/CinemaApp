@@ -9,4 +9,6 @@ import java.util.List;
 public interface ReservationService {
     public Reservation createReservation(Reservation reservation);
     public List<ReservationDTO> getReservationsByUsername(String username);
+    public void cancelReservation(Long reservationId);
+
 }

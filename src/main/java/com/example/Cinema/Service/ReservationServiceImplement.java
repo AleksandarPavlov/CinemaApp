@@ -45,4 +45,9 @@ public class ReservationServiceImplement implements ReservationService {
         }
         return reservationDTOS;
     }
+
+    @Override
+    public void cancelReservation(Long reservationId) {
+         reservationRepository.deleteById(reservationId);
+    }
 }

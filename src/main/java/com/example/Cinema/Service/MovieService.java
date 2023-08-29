@@ -8,4 +8,6 @@ public interface MovieService {
     public Movie createMovie(Movie movie);
     public List<Movie> getAllMovies();
     public Movie getMovieById(Long id);
+
+    public void removeMovie(Long id);
 }

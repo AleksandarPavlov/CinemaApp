@@ -19,7 +19,7 @@ public class User {
     private String email;
 
     @Column
-    private boolean isAdmin;
+    private boolean admin;
 
     public String getUsername() {
         return username;
@@ -46,14 +46,14 @@ public class User {
     }
 
     public boolean isAdmin() {
-        return isAdmin;
+        return admin;
     }
 
     public void setAdmin(boolean admin) {
-        isAdmin = admin;
+        this.admin = admin;
     }
 
-    public User(){
+    public User() {
 
     }
 }
